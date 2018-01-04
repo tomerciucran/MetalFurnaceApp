@@ -127,10 +127,10 @@ class EntriesTableViewController: UITableViewController {
 }
 
 extension EntriesTableViewController: EntriesTableViewHeaderDelegate {
-    func didTapAddButton(furnace: Furnace, scrap: Scrap, amount: Int) {
-        entries.append(Entry(date: Date(), furnace: furnace, scrap: scrap, amount: amount))
+    func didTapAddButton(furnace: Furnace, scrap: Scrap, amount: Int, completion: () -> Void) {
+        entries.insert(Entry(date: Date(), furnace: furnace, scrap: scrap, amount: amount), at: 0)
         tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
-        headerView.setRemainingCapacity(furnace: furnace)
+        completion()
     }
     
     func didTapPickerDoneButton() {

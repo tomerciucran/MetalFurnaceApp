@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EntriesTableViewHeaderDelegate: class {
-    func didTapAddButton(furnace: Furnace, scrap: Scrap, amount: Int)
+    func didTapAddButton(furnace: Furnace, scrap: Scrap, amount: Int, completion: () -> Void)
     func didTapPickerDoneButton()
     func didTapAddFurnacesButton()
     func didTapAddScrapButton()
@@ -43,7 +43,9 @@ class EntriesTableViewHeader: UIView {
 
     @IBAction func addButtonAction(_ sender: UIButton) {
         if let furnace = selectedFurnace, let scrap = selectedScrap, let amountString = amountTextField.text, let amount = Int(amountString) {
-            delegate?.didTapAddButton(furnace: furnace, scrap: scrap, amount: amount)
+            delegate?.didTapAddButton(furnace: furnace, scrap: scrap, amount: amount, completion: {
+                setRemainingCapacity(furnace: furnace)
+            })
         }
     }
     
@@ -81,7 +83,10 @@ class EntriesTableViewHeader: UIView {
         if let sender = sender, let amount = Int(sender.text!), amount > leftCapacity {
             return false
         }
-        return !furnaceTextField.text!.isEmpty && !scrapTextField.text!.isEmpty && !amountTextField.text!.isEmpty
+        return !furnaceTextField.text!.isEmpty
+            && !scrapTextField.text!.isEmpty
+            && !amountTextField.text!.isEmpty
+            && amountTextField.text!.isNumber
     }
     
     func setRemainingCapacity(furnace: Furnace) {
