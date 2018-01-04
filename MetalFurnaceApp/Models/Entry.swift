@@ -13,4 +13,10 @@ struct Entry {
     var furnace: Furnace
     var scrap: Scrap
     var amount: Int
+    
+    var dateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yy - HH:mm"
+        return dateFormatter.string(from: date)
+    }
 }

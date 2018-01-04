@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EntriesTableViewHeaderDelegate: class {
-    func didTapAddButton()
+    func didTapAddButton(furnace: Furnace, scrap: Scrap, amount: Int)
     func didTapPickerDoneButton()
     func didTapAddFurnacesButton()
     func didTapAddScrapButton()
@@ -23,9 +23,13 @@ class EntriesTableViewHeader: UIView {
     @IBOutlet weak var leftCapacityLabel: UILabel!
     @IBOutlet weak var scrapTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var addButton: UIButton!
     
     var furnaces: [Furnace] = []
     var scraps: [Scrap] = []
+    
+    private var selectedFurnace: Furnace?
+    private var selectedScrap: Scrap?
     
     let furnacePickerView = UIPickerView()
     let scrapPickerView = UIPickerView()
@@ -36,7 +40,9 @@ class EntriesTableViewHeader: UIView {
     }
 
     @IBAction func addButtonAction(_ sender: UIButton) {
-        delegate?.didTapAddButton()
+        if let furnace = selectedFurnace, let scrap = selectedScrap, let amountString = amountTextField.text, let amount = Int(amountString) {
+            delegate?.didTapAddButton(furnace: furnace, scrap: scrap, amount: amount)
+        }
     }
     
     @IBAction func addFurnacesButtonAction(_ sender: UIButton) {
@@ -52,20 +58,26 @@ class EntriesTableViewHeader: UIView {
             let index = furnacePickerView.selectedRow(inComponent: 0)
             let furnace = furnaces[index]
             furnaceTextField.text = furnace.name
+            selectedFurnace = furnace
         } else if scrapTextField.isFirstResponder {
             let index = scrapPickerView.selectedRow(inComponent: 0)
             let scrap = scraps[index]
             scrapTextField.text = scrap.name
+            selectedScrap = scrap
         }
         
-        // deduct selected amount from left capacity
+        addButton.isEnabled = validateTextFields()
         delegate?.didTapPickerDoneButton()
+    }
+    
+    func validateTextFields() -> Bool {
+        return !furnaceTextField.text!.isEmpty && !scrapTextField.text!.isEmpty && !amountTextField.text!.isEmpty
     }
     
     // MARK: - Textfield delegate
     
     @IBAction func textFieldValueChanged(_ sender: UITextField) {
-        
+        addButton.isEnabled = validateTextFields()
     }
     
     internal func configurePickerViews() {

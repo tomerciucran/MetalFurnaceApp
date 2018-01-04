@@ -77,6 +77,12 @@ class EntriesTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "EntryTableViewCell", bundle: nil), forCellReuseIdentifier: EntryTableViewCell.cellIdentifier)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func sendButtonAction(_ sender: UIBarButtonItem) {
+        
+    }
 
     // MARK: - Table view data source
 
@@ -87,11 +93,34 @@ class EntriesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entries.count
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: EntryTableViewCell.cellIdentifier, for: indexPath) as! EntryTableViewCell
+        let entry = entries[indexPath.row]
+        cell.dateLabel.text = entry.dateString
+        cell.furnaceNameLabel.text = entry.furnace.name
+        cell.scrapNameLabel.text = entry.scrap.name
+        cell.amountLabel.text = "\(entry.amount) kg"
+        print(entry.dateString)
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Sil") { [weak self] (action, indexPath) in
+            guard let `self` = self else { return }
+            self.entries.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+        return [delete]
+    }
 }
 
 extension EntriesTableViewController: EntriesTableViewHeaderDelegate {
-    func didTapAddButton() {
-        
+    func didTapAddButton(furnace: Furnace, scrap: Scrap, amount: Int) {
+        entries.append(Entry(date: Date(), furnace: furnace, scrap: scrap, amount: amount))
+        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
     }
     
     func didTapPickerDoneButton() {
