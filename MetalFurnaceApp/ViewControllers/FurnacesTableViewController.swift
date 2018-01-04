@@ -61,7 +61,7 @@ class FurnacesTableViewController: UITableViewController {
         if let name = furnace.name {
             cell.titleLabel.text = name
         }
-        cell.subtitleLabel.text = "\(furnace.capacity) kg"
+        cell.subtitleLabel.text = "\(Int(furnace.capacity).formatted()) kg"
         return cell
     }
 

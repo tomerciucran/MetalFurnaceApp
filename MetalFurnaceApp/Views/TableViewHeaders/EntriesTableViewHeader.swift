@@ -95,7 +95,7 @@ class EntriesTableViewHeader: UIView {
                            .reduce(0, +)
         
         let remaining = furnace.capacity - Int32(total)
-        leftCapacityLabel.text = "\(remaining) kg"
+        leftCapacityLabel.text = "\(Int(remaining).formatted()) kg"
         leftCapacity = Int(remaining)
         if remaining == 0 {
             addButton.isEnabled = false

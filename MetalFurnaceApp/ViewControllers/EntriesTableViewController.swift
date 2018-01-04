@@ -110,7 +110,7 @@ class EntriesTableViewController: UITableViewController {
         cell.dateLabel.text = entry.dateString
         cell.furnaceNameLabel.text = entry.furnace.name
         cell.scrapNameLabel.text = entry.scrap.name
-        cell.amountLabel.text = "\(entry.amount) kg"
+        cell.amountLabel.text = "\(entry.amount.formatted()) kg"
         return cell
     }
     

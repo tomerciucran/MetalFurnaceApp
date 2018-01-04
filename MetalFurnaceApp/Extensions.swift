@@ -20,3 +20,15 @@ extension String  {
         return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
 }
+
+extension Int {
+    
+    func formatted(maxFractionDigits: Int = 1, minimumFractionDigits: Int = 0) -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = maxFractionDigits
+        formatter.minimumFractionDigits = minimumFractionDigits
+        return formatter.string(for: self) ?? ""
+    }
+}
