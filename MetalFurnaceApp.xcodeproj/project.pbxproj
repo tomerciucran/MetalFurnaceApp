@@ -7,21 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F111DE971FFD76DE00AC16D9 /* EntriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111DE961FFD76DE00AC16D9 /* EntriesTableViewController.swift */; };
+		F111DE9A1FFD77B700AC16D9 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111DE981FFD77B700AC16D9 /* EntryTableViewCell.swift */; };
+		F111DE9B1FFD77B700AC16D9 /* EntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F111DE991FFD77B700AC16D9 /* EntryTableViewCell.xib */; };
 		F15AD4221FFCDC4A00C6428A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4211FFCDC4A00C6428A /* AppDelegate.swift */; };
-		F15AD4241FFCDC4A00C6428A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4231FFCDC4A00C6428A /* ViewController.swift */; };
 		F15AD4271FFCDC4A00C6428A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15AD4251FFCDC4A00C6428A /* Main.storyboard */; };
 		F15AD4291FFCDC4A00C6428A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15AD4281FFCDC4A00C6428A /* Assets.xcassets */; };
 		F15AD42C1FFCDC4A00C6428A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15AD42A1FFCDC4A00C6428A /* LaunchScreen.storyboard */; };
+		F15AD4341FFCE62000C6428A /* FurnacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4331FFCE62000C6428A /* FurnacesTableViewController.swift */; };
+		F15AD43A1FFCE66400C6428A /* FurnaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4381FFCE66400C6428A /* FurnaceTableViewCell.swift */; };
+		F15AD43B1FFCE66400C6428A /* FurnaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15AD4391FFCE66400C6428A /* FurnaceTableViewCell.xib */; };
+		F15AD43D1FFCE8C000C6428A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD43C1FFCE8C000C6428A /* Constants.swift */; };
+		F15AD4451FFCF06D00C6428A /* FurnaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4441FFCF06D00C6428A /* FurnaceStore.swift */; };
+		F15AD4691FFD03F400C6428A /* MetalFurnaceApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4671FFD03F400C6428A /* MetalFurnaceApp.xcdatamodeld */; };
+		F15AD46B1FFD11A500C6428A /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD46A1FFD11A500C6428A /* Entry.swift */; };
+		F1675EFA1FFE22AD00A66DEE /* EntriesTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1675EF91FFE22AD00A66DEE /* EntriesTableViewHeader.xib */; };
+		F1675EFC1FFE22CD00A66DEE /* EntriesTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1675EFB1FFE22CD00A66DEE /* EntriesTableViewHeader.swift */; };
+		F1675EFE1FFE23C600A66DEE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1675EFD1FFE23C600A66DEE /* Extensions.swift */; };
+		F1675F001FFE31C100A66DEE /* ScrapsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1675EFF1FFE31C100A66DEE /* ScrapsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F111DE961FFD76DE00AC16D9 /* EntriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesTableViewController.swift; sourceTree = "<group>"; };
+		F111DE981FFD77B700AC16D9 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
+		F111DE991FFD77B700AC16D9 /* EntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryTableViewCell.xib; sourceTree = "<group>"; };
 		F15AD41E1FFCDC4A00C6428A /* MetalFurnaceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalFurnaceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15AD4211FFCDC4A00C6428A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F15AD4231FFCDC4A00C6428A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F15AD4261FFCDC4A00C6428A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F15AD4281FFCDC4A00C6428A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F15AD42B1FFCDC4A00C6428A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F15AD42D1FFCDC4A00C6428A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F15AD4331FFCE62000C6428A /* FurnacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnacesTableViewController.swift; sourceTree = "<group>"; };
+		F15AD4381FFCE66400C6428A /* FurnaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnaceTableViewCell.swift; sourceTree = "<group>"; };
+		F15AD4391FFCE66400C6428A /* FurnaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FurnaceTableViewCell.xib; sourceTree = "<group>"; };
+		F15AD43C1FFCE8C000C6428A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F15AD4441FFCF06D00C6428A /* FurnaceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnaceStore.swift; sourceTree = "<group>"; };
+		F15AD4681FFD03F400C6428A /* MetalFurnaceApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MetalFurnaceApp.xcdatamodel; sourceTree = "<group>"; };
+		F15AD46A1FFD11A500C6428A /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		F1675EF91FFE22AD00A66DEE /* EntriesTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntriesTableViewHeader.xib; sourceTree = "<group>"; };
+		F1675EFB1FFE22CD00A66DEE /* EntriesTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesTableViewHeader.swift; sourceTree = "<group>"; };
+		F1675EFD1FFE23C600A66DEE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F1675EFF1FFE31C100A66DEE /* ScrapsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +80,75 @@
 		F15AD4201FFCDC4A00C6428A /* MetalFurnaceApp */ = {
 			isa = PBXGroup;
 			children = (
+				F15AD4431FFCF05600C6428A /* Stores */,
+				F15AD43E1FFCEC2000C6428A /* Models */,
+				F15AD4361FFCE63A00C6428A /* Views */,
 				F15AD4211FFCDC4A00C6428A /* AppDelegate.swift */,
-				F15AD4231FFCDC4A00C6428A /* ViewController.swift */,
+				F15AD4351FFCE62E00C6428A /* ViewControllers */,
 				F15AD4251FFCDC4A00C6428A /* Main.storyboard */,
 				F15AD4281FFCDC4A00C6428A /* Assets.xcassets */,
 				F15AD42A1FFCDC4A00C6428A /* LaunchScreen.storyboard */,
 				F15AD42D1FFCDC4A00C6428A /* Info.plist */,
+				F15AD43C1FFCE8C000C6428A /* Constants.swift */,
+				F1675EFD1FFE23C600A66DEE /* Extensions.swift */,
+				F15AD4671FFD03F400C6428A /* MetalFurnaceApp.xcdatamodeld */,
 			);
 			path = MetalFurnaceApp;
+			sourceTree = "<group>";
+		};
+		F15AD4351FFCE62E00C6428A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F15AD4331FFCE62000C6428A /* FurnacesTableViewController.swift */,
+				F111DE961FFD76DE00AC16D9 /* EntriesTableViewController.swift */,
+				F1675EFF1FFE31C100A66DEE /* ScrapsTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F15AD4361FFCE63A00C6428A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1675EF81FFE227E00A66DEE /* TableViewHeaders */,
+				F15AD4371FFCE64B00C6428A /* TableViewCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F15AD4371FFCE64B00C6428A /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F15AD4381FFCE66400C6428A /* FurnaceTableViewCell.swift */,
+				F15AD4391FFCE66400C6428A /* FurnaceTableViewCell.xib */,
+				F111DE981FFD77B700AC16D9 /* EntryTableViewCell.swift */,
+				F111DE991FFD77B700AC16D9 /* EntryTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		F15AD43E1FFCEC2000C6428A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F15AD46A1FFD11A500C6428A /* Entry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F15AD4431FFCF05600C6428A /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				F15AD4441FFCF06D00C6428A /* FurnaceStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		F1675EF81FFE227E00A66DEE /* TableViewHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				F1675EF91FFE22AD00A66DEE /* EntriesTableViewHeader.xib */,
+				F1675EFB1FFE22CD00A66DEE /* EntriesTableViewHeader.swift */,
+			);
+			path = TableViewHeaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,7 +183,7 @@
 				TargetAttributes = {
 					F15AD41D1FFCDC4A00C6428A = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -123,7 +210,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F15AD43B1FFCE66400C6428A /* FurnaceTableViewCell.xib in Resources */,
+				F1675EFA1FFE22AD00A66DEE /* EntriesTableViewHeader.xib in Resources */,
 				F15AD42C1FFCDC4A00C6428A /* LaunchScreen.storyboard in Resources */,
+				F111DE9B1FFD77B700AC16D9 /* EntryTableViewCell.xib in Resources */,
 				F15AD4291FFCDC4A00C6428A /* Assets.xcassets in Resources */,
 				F15AD4271FFCDC4A00C6428A /* Main.storyboard in Resources */,
 			);
@@ -136,8 +226,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F15AD4241FFCDC4A00C6428A /* ViewController.swift in Sources */,
+				F111DE971FFD76DE00AC16D9 /* EntriesTableViewController.swift in Sources */,
+				F15AD46B1FFD11A500C6428A /* Entry.swift in Sources */,
+				F15AD4341FFCE62000C6428A /* FurnacesTableViewController.swift in Sources */,
+				F15AD4451FFCF06D00C6428A /* FurnaceStore.swift in Sources */,
+				F15AD4691FFD03F400C6428A /* MetalFurnaceApp.xcdatamodeld in Sources */,
+				F1675F001FFE31C100A66DEE /* ScrapsTableViewController.swift in Sources */,
 				F15AD4221FFCDC4A00C6428A /* AppDelegate.swift in Sources */,
+				F111DE9A1FFD77B700AC16D9 /* EntryTableViewCell.swift in Sources */,
+				F15AD43A1FFCE66400C6428A /* FurnaceTableViewCell.swift in Sources */,
+				F15AD43D1FFCE8C000C6428A /* Constants.swift in Sources */,
+				F1675EFE1FFE23C600A66DEE /* Extensions.swift in Sources */,
+				F1675EFC1FFE22CD00A66DEE /* EntriesTableViewHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,12 +374,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 76E76V9G7L;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MetalFurnaceApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cihanMuradoglu.MetalFurnaceApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -289,12 +391,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 76E76V9G7L;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MetalFurnaceApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cihanMuradoglu.MetalFurnaceApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -322,6 +426,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F15AD4671FFD03F400C6428A /* MetalFurnaceApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F15AD4681FFD03F400C6428A /* MetalFurnaceApp.xcdatamodel */,
+			);
+			currentVersion = F15AD4681FFD03F400C6428A /* MetalFurnaceApp.xcdatamodel */;
+			path = MetalFurnaceApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F15AD4161FFCDC4A00C6428A /* Project object */;
 }
