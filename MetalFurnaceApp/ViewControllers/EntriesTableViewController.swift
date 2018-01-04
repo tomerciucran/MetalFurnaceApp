@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class EntriesTableViewController: UITableViewController {
     
@@ -91,7 +92,26 @@ class EntriesTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func sendButtonAction(_ sender: UIBarButtonItem) {
-        
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["tomercukran@gmail.com"])
+            mail.setSubject("deneme")
+            
+            var body = ""
+            for entry in entries {
+                body += "\(entry.dateString) \(entry.furnace.name ?? "") \(entry.scrap.name ?? "") \(entry.amount) kg\n"
+            }
+            
+            mail.setMessageBody(body, isHTML: false)
+            
+            present(mail, animated: true)
+        } else {
+            // show failure alert
+            
+            
+        }
     }
 
     // MARK: - Table view data source
@@ -143,5 +163,11 @@ extension EntriesTableViewController: EntriesTableViewHeaderDelegate {
     
     func didTapAddScrapButton() {
         performSegue(withIdentifier: Segue.GoToScraps, sender: nil)
+    }
+}
+
+extension EntriesTableViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }
