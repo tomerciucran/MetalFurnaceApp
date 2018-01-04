@@ -27,9 +27,11 @@ class EntriesTableViewHeader: UIView {
     
     var furnaces: [Furnace] = []
     var scraps: [Scrap] = []
+    var entries: [Entry] = []
     
     private var selectedFurnace: Furnace?
     private var selectedScrap: Scrap?
+    private var leftCapacity = 0
     
     let furnacePickerView = UIPickerView()
     let scrapPickerView = UIPickerView()
@@ -59,6 +61,7 @@ class EntriesTableViewHeader: UIView {
             let furnace = furnaces[index]
             furnaceTextField.text = furnace.name
             selectedFurnace = furnace
+            setRemainingCapacity(furnace: furnace)
         } else if scrapTextField.isFirstResponder {
             let index = scrapPickerView.selectedRow(inComponent: 0)
             let scrap = scraps[index]
@@ -66,22 +69,41 @@ class EntriesTableViewHeader: UIView {
             selectedScrap = scrap
         }
         
-        addButton.isEnabled = validateTextFields()
+        addButton.isEnabled = validateTextFields(sender: nil)
         delegate?.didTapPickerDoneButton()
     }
     
-    func validateTextFields() -> Bool {
+    @objc func pickerCloseButtonAction() {
+        delegate?.didTapPickerDoneButton()
+    }
+    
+    func validateTextFields(sender: UITextField?) -> Bool {
+        if let sender = sender, let amount = Int(sender.text!), amount > leftCapacity {
+            return false
+        }
         return !furnaceTextField.text!.isEmpty && !scrapTextField.text!.isEmpty && !amountTextField.text!.isEmpty
+    }
+    
+    func setRemainingCapacity(furnace: Furnace) {
+        let total = entries.filter({ $0.furnace.objectID == furnace.objectID })
+                           .map({ $0.amount })
+                           .reduce(0, +)
+        
+        let remaining = furnace.capacity - Int32(total)
+        leftCapacityLabel.text = "\(remaining) kg"
+        leftCapacity = Int(remaining)
+        if remaining == 0 {
+            addButton.isEnabled = false
+        }
     }
     
     // MARK: - Textfield delegate
     
     @IBAction func textFieldValueChanged(_ sender: UITextField) {
-        addButton.isEnabled = validateTextFields()
+        addButton.isEnabled = validateTextFields(sender: sender)
     }
     
     internal func configurePickerViews() {
-        
         furnacePickerView.dataSource = self
         furnacePickerView.delegate = self
         scrapPickerView.dataSource = self
@@ -91,16 +113,18 @@ class EntriesTableViewHeader: UIView {
         scrapTextField.inputView = scrapPickerView
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 50))
-        toolbar.barStyle = .black
+        toolbar.barStyle = .default
         toolbar.isTranslucent = false
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         
-        let buttonItem = UIBarButtonItem(title: "Seç", style: .done, target: self, action: #selector(pickerDoneButtonAction))
-        buttonItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)], for: UIControlState())
-        buttonItem.tintColor = .white
+        let buttonItem1 = UIBarButtonItem(title: "Seç", style: .done, target: self, action: #selector(pickerDoneButtonAction))
+        buttonItem1.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)], for: UIControlState())
         
-        toolbar.items = [flexSpace, buttonItem, flexSpace]
+        let buttonItem2 = UIBarButtonItem(title: "Kapat", style: .done, target: self, action: #selector(pickerCloseButtonAction))
+        buttonItem2.setTitleTextAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)], for: UIControlState())
+        
+        toolbar.items = [buttonItem2, flexSpace, buttonItem1]
         toolbar.sizeToFit()
         
         furnaceTextField.inputAccessoryView = toolbar
@@ -134,9 +158,5 @@ extension EntriesTableViewHeader: UIPickerViewDelegate {
             let scrap = scraps[row]
             return scrap.name
         }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
     }
 }

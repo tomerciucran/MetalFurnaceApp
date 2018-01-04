@@ -12,9 +12,21 @@ class EntriesTableViewController: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    private var entries: [Entry] = []
-    private var furnaces: [Furnace] = []
-    private var scraps: [Scrap] = []
+    private var entries: [Entry] = [] {
+        didSet {
+            headerView?.entries = entries
+        }
+    }
+    private var furnaces: [Furnace] = [] {
+        didSet {
+            headerView?.furnaces = furnaces
+        }
+    }
+    private var scraps: [Scrap] = [] {
+        didSet {
+            headerView?.scraps = scraps
+        }
+    }
     
     var headerView: EntriesTableViewHeader!
 
@@ -34,8 +46,6 @@ class EntriesTableViewController: UITableViewController {
         do {
             furnaces = try context.fetch(Furnace.fetchRequest())
             scraps = try context.fetch(Scrap.fetchRequest())
-            headerView?.furnaces = furnaces
-            headerView?.scraps = scraps
         } catch {
             print("Fetching Failed")
         }
@@ -101,7 +111,6 @@ class EntriesTableViewController: UITableViewController {
         cell.furnaceNameLabel.text = entry.furnace.name
         cell.scrapNameLabel.text = entry.scrap.name
         cell.amountLabel.text = "\(entry.amount) kg"
-        print(entry.dateString)
         return cell
     }
     
@@ -121,6 +130,7 @@ extension EntriesTableViewController: EntriesTableViewHeaderDelegate {
     func didTapAddButton(furnace: Furnace, scrap: Scrap, amount: Int) {
         entries.append(Entry(date: Date(), furnace: furnace, scrap: scrap, amount: amount))
         tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .top)
+        headerView.setRemainingCapacity(furnace: furnace)
     }
     
     func didTapPickerDoneButton() {
