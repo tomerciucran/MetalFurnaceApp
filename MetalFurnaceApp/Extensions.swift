@@ -32,3 +32,11 @@ extension Int {
         return formatter.string(for: self) ?? ""
     }
 }
+
+extension UIViewController {
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler:nil))
+        present(alertController, animated: true, completion: nil)
+    }
+}

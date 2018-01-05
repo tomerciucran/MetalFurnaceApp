@@ -105,12 +105,9 @@ class EntriesTableViewController: UITableViewController {
             }
             
             mail.setMessageBody(body, isHTML: false)
-            
             present(mail, animated: true)
         } else {
-            // show failure alert
-            
-            
+            showAlert(title: "Hata", message: "Lütfen e-posta ayarlarınızı kontrol edin.")
         }
     }
 
