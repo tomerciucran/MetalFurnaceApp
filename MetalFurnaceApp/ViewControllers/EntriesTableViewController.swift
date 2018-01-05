@@ -144,6 +144,10 @@ class EntriesTableViewController: UITableViewController {
         
         return [delete]
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }
 
 extension EntriesTableViewController: EntriesTableViewHeaderDelegate {

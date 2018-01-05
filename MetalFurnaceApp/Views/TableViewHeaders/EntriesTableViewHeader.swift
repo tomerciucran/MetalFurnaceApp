@@ -45,6 +45,7 @@ class EntriesTableViewHeader: UIView {
         if let furnace = selectedFurnace, let scrap = selectedScrap, let amountString = amountTextField.text, let amount = Int(amountString) {
             delegate?.didTapAddButton(furnace: furnace, scrap: scrap, amount: amount, completion: {
                 setRemainingCapacity(furnace: furnace)
+                addButton.isEnabled = validateTextFields()
             })
         }
     }
@@ -71,7 +72,7 @@ class EntriesTableViewHeader: UIView {
             selectedScrap = scrap
         }
         
-        addButton.isEnabled = validateTextFields(sender: nil)
+        addButton.isEnabled = validateTextFields()
         delegate?.didTapPickerDoneButton()
     }
     
@@ -79,8 +80,8 @@ class EntriesTableViewHeader: UIView {
         delegate?.didTapPickerDoneButton()
     }
     
-    func validateTextFields(sender: UITextField?) -> Bool {
-        if let sender = sender, let amount = Int(sender.text!), amount > leftCapacity {
+    func validateTextFields() -> Bool {
+        if let text = amountTextField.text, let amount = Int(text), amount > leftCapacity {
             return false
         }
         return !furnaceTextField.text!.isEmpty
@@ -105,7 +106,7 @@ class EntriesTableViewHeader: UIView {
     // MARK: - Textfield delegate
     
     @IBAction func textFieldValueChanged(_ sender: UITextField) {
-        addButton.isEnabled = validateTextFields(sender: sender)
+        addButton.isEnabled = validateTextFields()
     }
     
     internal func configurePickerViews() {

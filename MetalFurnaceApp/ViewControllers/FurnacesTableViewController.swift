@@ -38,7 +38,7 @@ class FurnacesTableViewController: UITableViewController {
     internal func configureTableView() {
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 150
         tableView.separatorStyle = .singleLine
         
         tableView.register(UINib(nibName: "FurnaceTableViewCell", bundle: nil), forCellReuseIdentifier: FurnaceTableViewCell.cellIdentifier)
@@ -68,7 +68,7 @@ class FurnacesTableViewController: UITableViewController {
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return UITableViewAutomaticDimension
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
