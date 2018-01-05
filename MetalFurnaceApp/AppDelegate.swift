@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let container = NSPersistentContainer(name: "MetalFurnaceApp")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                self.window?.rootViewController?.showAlert(title: "Hata", message: error.localizedDescription)
+                UIApplication.topViewController()?.showAlert(title: "Hata", message: error.localizedDescription)
             }
         })
         return container
@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try context.save()
             } catch {
                 let nserror = error as NSError
-                self.window?.rootViewController?.showAlert(title: "Hata", message: nserror.localizedDescription)
+                UIApplication.topViewController()?.showAlert(title: "Hata", message: nserror.localizedDescription)
             }
         }
     }
