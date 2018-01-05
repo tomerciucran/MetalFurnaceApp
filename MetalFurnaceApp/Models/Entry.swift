@@ -16,7 +16,7 @@ struct Entry {
     
     var dateString: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy - HH:mm"
+        dateFormatter.dateFormat = "dd.MM.yy\nHH:mm"
         return dateFormatter.string(from: date)
     }
 }
