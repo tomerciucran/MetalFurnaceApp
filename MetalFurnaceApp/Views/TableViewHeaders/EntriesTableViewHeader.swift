@@ -44,6 +44,7 @@ class EntriesTableViewHeader: UIView {
     @IBAction func addButtonAction(_ sender: UIButton) {
         if let furnace = selectedFurnace, let scrap = selectedScrap, let amountString = amountTextField.text, let amount = Int(amountString) {
             delegate?.didTapAddButton(furnace: furnace, scrap: scrap, amount: amount, completion: {
+                resetFields()
                 setRemainingCapacity(furnace: furnace)
                 addButton.isEnabled = validateTextFields()
             })
@@ -102,6 +103,12 @@ class EntriesTableViewHeader: UIView {
         if remaining == 0 {
             addButton.isEnabled = false
         }
+    }
+    
+    func resetFields() {
+        selectedScrap = nil
+        scrapTextField.text = ""
+        amountTextField.text = ""
     }
     
     // MARK: - Textfield delegate
