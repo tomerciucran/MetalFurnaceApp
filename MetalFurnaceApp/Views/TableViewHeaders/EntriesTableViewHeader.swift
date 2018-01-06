@@ -91,6 +91,7 @@ class EntriesTableViewHeader: UIView {
     }
     
     func setRemainingCapacity(furnace: Furnace) {
+        guard furnace.objectID == selectedFurnace?.objectID else { return }
         let total = entries.filter({ $0.furnace.objectID == furnace.objectID })
                            .map({ $0.amount })
                            .reduce(0, +)

@@ -135,8 +135,10 @@ class EntriesTableViewController: UITableViewController {
         
         let delete = UITableViewRowAction(style: .destructive, title: "Sil") { [weak self] (action, indexPath) in
             guard let `self` = self else { return }
+            let furnace = self.entries[indexPath.row].furnace
             self.entries.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            self.headerView.setRemainingCapacity(furnace: furnace)
         }
         
         return [delete]
