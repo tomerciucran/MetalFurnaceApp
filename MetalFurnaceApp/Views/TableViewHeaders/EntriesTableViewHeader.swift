@@ -111,6 +111,16 @@ class EntriesTableViewHeader: UIView {
         amountTextField.text = ""
     }
     
+    func resetAllFields() {
+        selectedFurnace = nil
+        selectedScrap = nil
+        furnaceTextField.text = ""
+        scrapTextField.text = ""
+        amountTextField.text = ""
+        leftCapacityLabel.text = "-"
+        leftCapacity = 0
+    }
+    
     // MARK: - Textfield delegate
     
     @IBAction func textFieldValueChanged(_ sender: UITextField) {

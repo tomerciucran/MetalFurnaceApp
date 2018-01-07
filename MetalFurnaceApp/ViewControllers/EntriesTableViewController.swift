@@ -29,6 +29,8 @@ class EntriesTableViewController: UITableViewController {
         }
     }
     
+    private var deletedEntries: [Entry] = []
+    
     var headerView: EntriesTableViewHeader!
 
     override func viewDidLoad() {
@@ -50,6 +52,12 @@ class EntriesTableViewController: UITableViewController {
         } catch {
             print("Fetching Failed")
         }
+    }
+    
+    func clearData() {
+        entries.removeAll()
+        deletedEntries.removeAll()
+        headerView.resetAllFields()
     }
     
     // MARK: - Table View Header
@@ -91,6 +99,11 @@ class EntriesTableViewController: UITableViewController {
     
     // MARK: - Actions
     
+    @IBAction func cleanButtonAction(_ sender: UIBarButtonItem) {
+        clearData()
+        tableView.reloadData()
+    }
+    
     @IBAction func sendButtonAction(_ sender: UIBarButtonItem) {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
@@ -100,8 +113,16 @@ class EntriesTableViewController: UITableViewController {
             mail.setSubject("deneme")
             
             var body = ""
-            for entry in entries {
-                body += "\(entry.dateString) \(entry.furnace.name ?? "") \(entry.scrap.name ?? "") \(entry.amount) kg\n"
+            
+            let sortedEntries = entries.sorted(by: { $1.date > $0.date })
+            let sortedDeletedEntries = deletedEntries.sorted(by: { $1.date > $0.date })
+            
+            for entry in sortedEntries {
+                body += "\(entry.dateString), \(entry.furnace.name ?? ""), \(entry.scrap.name ?? ""), \(entry.amount) kg\n"
+            }
+            
+            for entry in sortedDeletedEntries {
+                body += "\(entry.dateString), \(entry.furnace.name ?? ""), \(entry.scrap.name ?? ""), \(entry.amount) kg - SİLİNDİ\n"
             }
             
             mail.setMessageBody(body, isHTML: false)
@@ -124,7 +145,7 @@ class EntriesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EntryTableViewCell.cellIdentifier, for: indexPath) as! EntryTableViewCell
         let entry = entries[indexPath.row]
-        cell.dateLabel.text = entry.dateString
+        cell.dateLabel.text = entry.twoLinesDateString
         cell.furnaceNameLabel.text = entry.furnace.name
         cell.scrapNameLabel.text = entry.scrap.name
         cell.amountLabel.text = "\(entry.amount.formatted()) kg"
@@ -136,6 +157,7 @@ class EntriesTableViewController: UITableViewController {
         let delete = UITableViewRowAction(style: .destructive, title: "Sil") { [weak self] (action, indexPath) in
             guard let `self` = self else { return }
             let furnace = self.entries[indexPath.row].furnace
+            self.deletedEntries.append(self.entries[indexPath.row])
             self.entries.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             self.headerView.setRemainingCapacity(furnace: furnace)
@@ -171,6 +193,10 @@ extension EntriesTableViewController: EntriesTableViewHeaderDelegate {
 
 extension EntriesTableViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if result == .sent && error == nil {
+            clearData()
+            tableView.reloadData()
+        }
         controller.dismiss(animated: true)
     }
 }

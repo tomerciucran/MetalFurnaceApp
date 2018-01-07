@@ -16,6 +16,12 @@ struct Entry {
     
     var dateString: String {
         let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yy-HH:mm"
+        return dateFormatter.string(from: date)
+    }
+    
+    var twoLinesDateString: String {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yy\nHH:mm"
         return dateFormatter.string(from: date)
     }

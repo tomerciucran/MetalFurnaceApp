@@ -42,7 +42,6 @@
         <!--Navigation Controller-->
         <scene sceneID="gQg-V5-oFm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gpI-uV-g1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gQ8-AQ-jqO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NhT-JD-fdV">
@@ -54,6 +53,7 @@
                         <segue destination="U2S-On-Aff" kind="relationship" relationship="rootViewController" id="6i6-cT-EXg"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gpI-uV-g1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="216" y="169.11544227886057"/>
         </scene>
@@ -71,6 +71,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Kayıtlar" id="JjL-U2-kMC">
+                        <barButtonItem key="leftBarButtonItem" title="Temizle" id="mow-0S-jrc">
+                            <connections>
+                                <action selector="cleanButtonAction:" destination="2RA-US-ah8" id="0dH-r8-RGO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Gönder" id="HhQ-oQ-WyD">
                             <connections>
                                 <action selector="sendButtonAction:" destination="2RA-US-ah8" id="hbb-9p-6nR"/>
